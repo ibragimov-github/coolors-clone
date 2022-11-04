@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Color.module.scss';
-import { getRandomInt } from '../Colors/Colors';
 
-function Color({ myColor }) {
+function Color({ myColor, myIndex }) {
+  if (myColor.length <= myIndex) {myIndex = myIndex - myColor.length}
   function getRGB(c) {
     return parseInt(c, 16) || c
   }
@@ -33,18 +33,16 @@ function Color({ myColor }) {
 
     return whiteContrast > blackContrast ? '#ffffff' : '#000000'
   }
-  const [thisColor, setThisColor] = useState(myColor)
-  const thisIndex = getRandomInt(0, thisColor.length);
   return (
     <div
       className={styles.color}
       style={{
-        'backgroundColor': `${thisColor ? thisColor[thisIndex].rgb : null}`,
-        'color': `${getTextColor(thisColor[thisIndex].hex)}`
+        'backgroundColor': `${myColor[myIndex]['hex']}`,
+        'color': `${getTextColor(myColor[myIndex]['hex'])}`
       }}
     >
-      <h2 className={styles['this-color']}>{thisColor[thisIndex].hex}</h2>
-      <h3 className={styles['color-name']}>{thisColor[thisIndex].name}</h3>
+      <h2 className={styles['this-color']}>{ myColor[myIndex]['hex'] }</h2>
+      <h3 className={styles['color-name']}>{ myColor[myIndex]['name'] }</h3>
     </div>
   );
 }

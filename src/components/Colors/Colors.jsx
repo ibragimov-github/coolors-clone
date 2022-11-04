@@ -32,7 +32,7 @@ function Colors() {
       setColorsIndex1(getRandomInt());
       setColorsIndex2(getRandomInt());
       setColorsIndex3(getRandomInt());
-      setColorsArray(generateArray(3, allColors.length - 1));
+      setColorsArray(generateArray(5, allColors.length - 1));
     }
   }
   useEffect(() => {
@@ -47,18 +47,23 @@ function Colors() {
     <div className={styles.container}>
       <Color
         myColor={allColors[colorIndex3]}
+        myIndex={colorsArray[0]}
       />
       <Color
         myColor={allColors[colorIndex3]}
+        myIndex={colorsArray[1]}
       />
       <Color
         myColor={allColors[colorIndex3]}
+        myIndex={colorsArray[2]}
       />
       <Color
         myColor={allColors[colorIndex1]}
+        myIndex={colorIndex1}
       />
       <Color
         myColor={allColors[colorIndex2]}
+        myIndex={colorIndex2}
       />
     </div>
   );
