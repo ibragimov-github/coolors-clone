@@ -1,17 +1,20 @@
 .color {
   width: auto;
-  height: 100%;
+  min-height: 100%;
   color: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .lock {
     margin-top: 5%;
     margin-bottom: 15px;
+
     &:hover {
       transform: scale(1.2);
     }
   }
+
   .this-color {
     border: none;
     background: none;
@@ -20,6 +23,7 @@
     cursor: pointer;
     transition: .2s;
     border-radius: 12px;
+
     &:hover {
       background-color: rgba($color: #fff, $alpha: .3);
     }
@@ -27,5 +31,15 @@
 }
 
 @media (max-width: 1240px) {
-  .lock {margin-top: 0;}
+  .color {
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 15px;
+
+    .lock {
+      margin-top: 0;
+    }
+  }
+
+
 }

@@ -53,7 +53,7 @@ function Color({ myColor, myIndex }) {
       }}
     >
       <Button
-        size='large'
+        size='middle'
         className={styles.lock}
         shape="round"
         icon={Object.keys(isLocked).length ? <LockOutlined /> : <UnlockOutlined />}
