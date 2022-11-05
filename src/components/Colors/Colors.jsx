@@ -26,7 +26,7 @@ function Colors() {
   const [colorIndex2, setColorsIndex2] = useState(getRandomInt());
   const [colorIndex3, setColorsIndex3] = useState(getRandomInt());
 
-  const [colorsArray, setColorsArray] = useState(generateArray(3, allColors[colorIndex3].length - 1));
+  const [colorsArray, setColorsArray] = useState(generateArray(5, allColors[colorIndex3].length - 1));
   const spaceBarHandler = (e) => {
     if (e.code === 'Space') {
       setColorsIndex1(getRandomInt());
@@ -59,11 +59,11 @@ function Colors() {
       />
       <Color
         myColor={allColors[colorIndex1]}
-        myIndex={colorIndex1}
+        myIndex={colorsArray[3]}
       />
       <Color
         myColor={allColors[colorIndex2]}
-        myIndex={colorIndex2}
+        myIndex={colorsArray[4]}
       />
     </div>
   );

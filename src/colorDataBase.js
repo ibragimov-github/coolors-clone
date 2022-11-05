@@ -194,11 +194,6 @@ export const allColors = [
       rgb: 'rgb(218, 112, 214)'
     },
     {
-      name: 'Fuchsia',
-      hex: '#FF00FF',
-      rgb: 'rgb(255, 0, 255)'
-    },
-    {
       name: 'Magenta',
       hex: '#FF00FF',
       rgb: 'rgb(255, 0, 255)'
