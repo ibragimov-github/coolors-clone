@@ -32,12 +32,13 @@
 
 @media (max-width: 1240px) {
   .color {
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: left;
+    align-items: center;
     padding-left: 15px;
-
+    flex-direction: row;
+    .color-name {margin: 0;}
     .lock {
-      margin-top: 0;
+      margin: 0;
     }
   }
 
