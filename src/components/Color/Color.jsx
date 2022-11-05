@@ -1,8 +1,13 @@
 import React from 'react';
 import styles from './Color.module.scss';
+import { Button, message, Tooltip } from 'antd';
 
 function Color({ myColor, myIndex }) {
-  if (myColor.length <= myIndex) {myIndex = myIndex - myColor.length}
+  const success = () => {
+    message.success('Color is copy!');
+  };
+
+  if (myColor.length <= myIndex) { myIndex = myIndex - myColor.length }
   function getRGB(c) {
     return parseInt(c, 16) || c
   }
@@ -41,9 +46,22 @@ function Color({ myColor, myIndex }) {
         'color': `${getTextColor(myColor[myIndex]['hex'])}`
       }}
     >
-      <h2 className={styles['this-color']}>{ myColor[myIndex]['hex'] }</h2>
-      <h3 className={styles['color-name']}>{ myColor[myIndex]['name'] }</h3>
-    </div>
+      <Button
+        className={styles.lock}></Button>
+      <Tooltip title="Click the copy">
+        <button
+          style={{
+            'color': `${getTextColor(myColor[myIndex]['hex'])}`,
+          }}
+          onClick={() => {
+            navigator.clipboard.writeText(myColor[myIndex].hex);
+            success()
+          }}
+          className={styles['this-color']}>{myColor[myIndex]['hex']}</button></Tooltip>
+      <h3 style={{
+        'color': `${getTextColor(myColor[myIndex]['hex'])}`,
+      }} className={styles['color-name']}>{myColor[myIndex]['name']}</h3>
+    </div >
   );
 }
 

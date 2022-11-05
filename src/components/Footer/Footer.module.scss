@@ -1,0 +1,29 @@
+.footer {
+  width: 100%;
+  height: 60px;
+  display: none;
+  align-items: center;
+  padding: 0 12px;
+}
+
+@media (max-width: 1240px) {
+  .footer {
+    display: flex;
+
+    .generate {
+      width: max-content;
+      height: 40px;
+      padding: 0 10px;
+      border: 1px solid;
+      cursor: pointer;
+      box-shadow: inset #b1b0b5 0 0 0 .1px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #b1b0b5;
+      font-weight: 600;
+      &:hover {
+        box-shadow: inset #b1b0b5 0 0 0 1px;
+      }
+    }
+  }
+}
