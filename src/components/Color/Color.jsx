@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Color.module.scss';
 import { Button, message, Tooltip } from 'antd';
+import { LockOutlined, UnlockOutlined } from '@ant-design/icons';
 
 function Color({ myColor, myIndex }) {
+  const [isLocked, setIsLocked] = useState({});
+  const [thisColor, setThisColor] = useState(Object.keys(isLocked).length ? isLocked : myColor[myIndex]);
+  useEffect(() => {
+    setThisColor(Object.keys(isLocked).length ? isLocked : myColor[myIndex])
+  }, [myColor])
   const success = () => {
     message.success('Color is copy!');
   };
@@ -42,25 +48,31 @@ function Color({ myColor, myIndex }) {
     <div
       className={styles.color}
       style={{
-        'backgroundColor': `${myColor[myIndex]['hex']}`,
-        'color': `${getTextColor(myColor[myIndex]['hex'])}`
+        'backgroundColor': `${thisColor['hex']}`,
+        'color': `${getTextColor(thisColor['hex'])}`
       }}
     >
       <Button
-        className={styles.lock}></Button>
-      <Tooltip title="Click the copy">
-        <button
-          style={{
-            'color': `${getTextColor(myColor[myIndex]['hex'])}`,
-          }}
-          onClick={() => {
-            navigator.clipboard.writeText(myColor[myIndex].hex);
-            success()
-          }}
-          className={styles['this-color']}>{myColor[myIndex]['hex']}</button></Tooltip>
+        size='large'
+        className={styles.lock}
+        shape="round"
+        icon={Object.keys(isLocked).length ? <LockOutlined /> : <UnlockOutlined />}
+        onClick={() => {
+          Object.keys(isLocked).length ? setIsLocked({}) : setIsLocked(myColor[myIndex])
+        }}
+      ></Button>
+      <button
+        style={{
+          'color': `${getTextColor(thisColor['hex'])}`,
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(thisColor.hex);
+          success()
+        }}
+        className={styles['this-color']}>{thisColor['hex']}</button>
       <h3 style={{
-        'color': `${getTextColor(myColor[myIndex]['hex'])}`,
-      }} className={styles['color-name']}>{myColor[myIndex]['name']}</h3>
+        'color': `${getTextColor(thisColor['hex'])}`,
+      }} className={styles['color-name']}>{thisColor['name']}</h3>
     </div >
   );
 }

@@ -5,6 +5,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  .lock {
+    margin-top: 5%;
+    margin-bottom: 15px;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
   .this-color {
     border: none;
     background: none;
@@ -17,4 +24,8 @@
       background-color: rgba($color: #fff, $alpha: .3);
     }
   }
+}
+
+@media (max-width: 1240px) {
+  .lock {margin-top: 0;}
 }
